@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <title>Backend Developer Portfolio</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
@@ -32,6 +33,7 @@
         </ul>
       </nav>
     </header>
+    <!-- // site-header -->
 
     <main>
       <section id="hero" class="section hero-section">
@@ -48,6 +50,7 @@
           </div>
         </div>
       </section>
+      <!-- // hero-section -->
 
       <section id="about" class="section">
         <div class="container about-grid reveal">
@@ -57,24 +60,45 @@
             <p>
               사용자의 행동이 데이터와 서버 로직을 거쳐 안정적인 결과로 이어지는
               과정을 좋아합니다. 요구사항을 작게 나누고, 읽기 쉬운 코드와 명확한
-              API 계약을 바탕으로 협업 가능한 서비스를 만드는 데 집중합니다.
+              API 명세를 바탕으로 누구나 함께 사용하고 싶은 서비스를 만드는 데
+              집중합니다. 이러한 가치관을 바탕으로 실제 프로젝트에서 다음과 같은
+              기술적 고민을 실천해 왔습니다.
             </p>
             <p>
-              프로젝트에서는 Spring Boot, JPA, MySQL, AWS 배포 경험을 쌓았고,
-              장애 상황을 줄이기 위한 로깅, 예외 처리, 테스트 가능한 구조를
-              꾸준히 개선해 왔습니다.
+              Spring Boot, JPA, MySQL, AWS를 활용해 프로젝트를 완성했으며,
+              장애를 방지하는 로깅과 예외 처리, 그리고 테스트 가능한 구조를
+              끊임없이 고민하며 개선하고 성장을 하고 있습니다.
             </p>
           </div>
 
           <div class="profile-card">
             <div class="profile-image" aria-label="개발자 프로필 아바타">
-              <div class="avatar-face">
-                <span></span>
-              </div>
+              <img
+                src="pic/mypic.jpeg"
+                alt="이병창 백엔드 개발자 프로필 사진"
+              />
             </div>
-            <div>
-              <h3>Backend Developer</h3>
-              <p>Java · Spring · MySQL · AWS</p>
+            <div class="profile-info">
+              <h3 class="profile-name">이병창</h3>
+              <p class="profile-job-title">신입 백엔드 개발자</p>
+              <p class="profile-summary-text">
+                데이터 구조에 대한 집요함과, 협업을 위한 명확한 API를
+                설계합니다.
+              </p>
+              <div class="profile-contact-links">
+                <a href="mailto:dlqudckd3@gmail.com" class="contact-item">
+                  <span class="icon" aria-hidden="true">📧</span>
+                  dlqudckd3@gmail.com
+                </a>
+                <a
+                  href="https://github.com/BC215"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="contact-item"
+                  ><span class="icon" aria-hidden="true">🐙</span>
+                  github.com/BC215</a
+                >
+              </div>
             </div>
           </div>
 
@@ -103,6 +127,7 @@
             </p>
           </div>
         </div>
+        <!-- // about-grid -->
       </section>
 
       <section id="stack" class="section">
@@ -147,6 +172,7 @@
             </article>
           </div>
         </div>
+        <!-- // stack-grid -->
       </section>
 
       <section id="projects" class="section">
@@ -163,7 +189,7 @@
                 aria-label="전자상거래 API 서비스 이미지"
               ></div>
               <div class="project-body">
-                <h3>전자상거래 API 서비스</h3>
+                <h3>Map-C</h3>
                 <p>
                   상품, 주문, 결제 흐름을 REST API로 구현하고 인증과 권한 처리를
                   적용한 쇼핑몰 백엔드 프로젝트입니다.
@@ -173,9 +199,9 @@
                 </div>
                 <div class="project-actions">
                   <a
-                    href="https://github.com/"
+                    href="https://github.com/BC215/Semi.git"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     class="btn btn-small btn-primary"
                     >GitHub</a
                   >
@@ -190,7 +216,7 @@
                 aria-label="실시간 채팅 서비스 이미지"
               ></div>
               <div class="project-body">
-                <h3>실시간 채팅 서비스</h3>
+                <h3>MoodCast</h3>
                 <p>
                   WebSocket 기반 메시지 송수신과 Redis Pub/Sub을 활용해 실시간
                   대화 기능을 구성했습니다.
@@ -200,9 +226,9 @@
                 </div>
                 <div class="project-actions">
                   <a
-                    href="https://github.com/"
+                    href="https://github.com/BC215/MoodCast.git"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     class="btn btn-small btn-primary"
                     >GitHub</a
                   >
@@ -217,7 +243,7 @@
                 aria-label="자동 배포 파이프라인 이미지"
               ></div>
               <div class="project-body">
-                <h3>CI/CD 배포 파이프라인</h3>
+                <h3>GroupWare</h3>
                 <p>
                   Docker와 GitHub Actions를 사용해 빌드, 테스트, 배포 단계를
                   자동화한 인프라 프로젝트입니다.
@@ -228,8 +254,9 @@
                 <div class="project-actions">
                   <a
                     href="https://github.com/"
+                    href="https://github.com/BC215"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     class="btn btn-small btn-primary"
                     >GitHub</a
                   >
@@ -244,10 +271,10 @@
                 aria-label="스터디 모집 게시판 이미지"
               ></div>
               <div class="project-body">
-                <h3>스터디 모집 게시판</h3>
+                <h3>Learning Log</h3>
                 <p>
-                  게시글 검색, 댓글, 파일 업로드, 페이징을 구현하고 AWS S3를
-                  연동한 커뮤니티 서비스입니다.
+                  새로운 기술과 개념을 학습하며 기록한 개인 학습 로그입니다.
+                  꾸준한 성장을 위한 발자취를 담습니다.
                 </p>
                 <div class="tags">
                   <span>Java</span><span>JPA</span><span>AWS S3</span>
@@ -255,8 +282,10 @@
                 <div class="project-actions">
                   <a
                     href="https://github.com/"
+                    href="https://github.com/BC215"
                     target="_blank"
-                    rel="noreferrer"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     class="btn btn-small btn-primary"
                     >GitHub</a
                   >
@@ -265,48 +294,63 @@
               </div>
             </article>
           </div>
+          <!-- // project-grid -->
         </div>
       </section>
 
       <section id="contact" class="section contact-section">
         <div class="container contact-content reveal">
           <p class="section-kicker">Contact</p>
-          <h2>함께 성장할 팀을 찾고 있습니다</h2>
-          <p>백엔드 개발자로서 책임감 있게 배우고 기여하겠습니다.</p>
+          <h2>함께 고민하며 성장하는 백엔드 개발자입니다.</h2>
+          <p>
+            팀의 목표를 기술적으로 뒷받침하고, 동료들과 함께 더 나은 서비스를
+            만들어 가겠습니다.<br />
+            책임감을 바탕으로 팀의 프로젝트에 실질적인 가치를 더하는 개발자가
+            되겠습니다.
+          </p>
           <div class="contact-actions">
-            <a href="mailto:backend.dev@example.com" class="contact-button"
+            <a
+              href="mailto:dlqudckd3@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-button"
               >Email</a
             >
             <a
-              href="https://github.com/"
+              href="https://github.com/BC215"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               class="contact-button"
               >GitHub</a
             >
             <a
               href="https://open.kakao.com/"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               class="contact-button"
               >Kakao OpenChat</a
             >
           </div>
         </div>
+        <!-- // contact-content -->
       </section>
     </main>
 
     <footer class="footer">
       <div class="container footer-content">
-        <p class="footer-name">홍길동</p>
+        <p class="footer-name">이병창</p>
         <p>© 2026 Junior Backend Developer Portfolio. All rights reserved.</p>
         <div class="footer-links">
-          <a href="https://github.com/" target="_blank" rel="noreferrer"
+          <a
+            href="https://github.com/BC215"
+            target="_blank"
+            rel="noopener noreferrer"
             >GitHub</a
           >
           <a href="#" target="_blank" rel="noreferrer">Blog</a>
         </div>
       </div>
+      <!-- // footer-content -->
     </footer>
   </body>
 </html>

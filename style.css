@@ -194,8 +194,9 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(28px, 4vw, 42px);
   font-weight: 850;
+  font-size: clamp(24px, 3.5vw, 36px); /* h2 헤드라인 font-size 조정 */
+  line-height: 1.2; /* h2 헤드라인 line-height 조정 */
 }
 
 h3 {
@@ -301,14 +302,15 @@ h3 {
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr 0.8fr;
+  grid-template-columns: 1.2fr 1fr 1fr 1fr; /* 4열 구조로 변경 */
+  grid-auto-rows: minmax(200px, auto); /* 행 높이를 일정하게 보장 */
   gap: 22px;
-  align-items: stretch;
 }
 
 .about-copy {
-  grid-row: span 2;
-  padding-right: 24px;
+  grid-column: 1 / 2; /* 1번 열에 고정 */
+  grid-row: 1 / span 2; /* 세로로 2개 행만큼 차지 */
+  max-width: 450px; /* 텍스트 영역 max-width 제한 */
 }
 
 .about-copy p:not(.section-kicker) {
@@ -341,21 +343,48 @@ h3 {
   border-color: rgba(72, 245, 209, 0.42);
 }
 
+/* 프로필 카드는 우측 2~4열을 모두 차지하며 최상단에 배치 */
+.profile-card {
+  grid-column: 2 / 5;
+  grid-row: 1;
+}
+
+/* 01, 02, 03번 카드들을 그 아래에 각각 1열씩 차지하며 가로로 나란히 배치 */
+/* HTML 구조에서 .about-copy 다음 .profile-card 다음으로 오는 카드들을 가정합니다. */
+/* 01번 카드 (about-grid의 3번째 자식) */
+.about-grid > div:nth-child(3) {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+/* 02번 카드 (about-grid의 4번째 자식) */
+.about-grid > div:nth-child(4) {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+/* 03번 카드 (about-grid의 5번째 자식) */
+.about-grid > div:nth-child(5) {
+  grid-column: 4;
+  grid-row: 2;
+}
 .profile-card {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 24px;
-  min-height: 270px;
+  flex-direction: row; /* 수평 배치 */
+  align-items: center; /* 세로 중앙 정렬 */
+  gap: 32px; /* 이미지와 정보 사이 간격 */
+  min-height: 200px; /* 프로필 카드 최소 높이 조정 */
   padding: 24px;
 }
 
 .profile-image {
   display: grid;
   place-items: center;
-  min-height: 160px;
+  width: 160px; /* 고정 크기 */
+  height: 220px; /* 고정 크기 (160px로 변경) */
   border: 1px solid rgba(72, 245, 209, 0.18);
   border-radius: 8px;
+  overflow: hidden; /* Ensure image respects border-radius */
   background:
     linear-gradient(135deg, rgba(72, 245, 209, 0.16), transparent),
     repeating-linear-gradient(
@@ -365,24 +394,53 @@ h3 {
     );
 }
 
-.avatar-face {
-  position: relative;
-  width: 86px;
-  height: 86px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--mint), var(--cyan));
-  box-shadow: 0 0 40px rgba(72, 245, 209, 0.34);
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.avatar-face span {
-  position: absolute;
-  left: 50%;
-  bottom: -30px;
-  width: 124px;
-  height: 58px;
-  border-radius: 999px 999px 20px 20px;
-  background: rgba(67, 201, 255, 0.24);
-  transform: translateX(-50%);
+.profile-info {
+  flex-grow: 1; /* 남은 공간 채우기 */
+}
+
+.profile-info .profile-name {
+  font-size: 28px; /* 이름 폰트 크기 */
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.profile-info .profile-job-title {
+  font-size: 18px; /* 직함 폰트 크기 */
+  color: var(--mint); /* 직함 색상 */
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.profile-info .profile-summary-text {
+  font-size: 16px; /* 요약 문구 폰트 크기 */
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.profile-contact-links {
+  display: flex;
+  flex-wrap: wrap; /* 모바일에서 줄바꿈 허용 */
+  gap: 12px 20px; /* 항목 간 간격 */
+  margin-top: 20px; /* 요약 문구와의 간격 */
+}
+
+.profile-contact-links .contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 15px;
+  transition: color 180ms ease;
+}
+.profile-contact-links .contact-item:hover {
+  color: var(--mint);
 }
 
 .profile-card p,
@@ -396,12 +454,12 @@ h3 {
 }
 
 .strength-card {
-  min-height: 210px;
+  min-height: 210px; /* 기존 유지 */
   padding: 24px;
 }
 
 .strength-wide {
-  grid-column: span 2;
+  grid-column: auto; /* 이제 2칸을 차지할 필요가 없으므로 auto로 변경 */
 }
 
 .card-icon {
@@ -660,13 +718,19 @@ h3 {
 
 @media (max-width: 1024px) {
   .about-grid {
-    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    grid-template-columns: 1fr; /* 모바일에서는 1열로 변경 */
+    gap: 22px;
   }
-
   .about-copy {
-    grid-column: 1 / -1;
+    grid-column: auto;
     grid-row: auto;
-    padding-right: 0;
+  }
+  .profile-card,
+  .strength-card,
+  .stack-card {
+    grid-column: auto;
+    grid-row: auto; /* 모바일에서 row도 auto로 설정하여 자연스럽게 쌓이도록 */
   }
 
   .stack-grid {
@@ -674,14 +738,15 @@ h3 {
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
+  /* Mobile layout */
   html {
     scroll-padding-top: 78px;
   }
 
   .navbar,
   .container {
-    width: min(100% - 28px, 1120px);
+    width: calc(100% - 40px); /* 20px padding on each side */
   }
 
   .navbar {
@@ -695,8 +760,8 @@ h3 {
   .nav-menu {
     position: absolute;
     top: 64px;
-    left: 14px;
-    right: 14px;
+    left: 20px; /* Adjust based on new container width */
+    right: 20px; /* Adjust based on new container width */
     display: grid;
     gap: 6px;
     padding: 12px;
@@ -724,12 +789,12 @@ h3 {
   }
 
   .section {
-    padding: 82px 0;
+    padding: 60px 0; /* Reduced padding for mobile */
   }
 
   .hero-section {
     min-height: 690px;
-    padding-top: 128px;
+    padding-top: 128px; /* Keep existing */
   }
 
   h1 {
@@ -740,9 +805,62 @@ h3 {
     font-size: 16px;
   }
 
+  /* Hero section buttons full width */
+  .hero-actions,
+  .contact-actions,
+  .project-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .btn,
+  .contact-button {
+    width: 100%;
+  }
+
+  /* About Section */
+  .about-grid {
+    display: flex; /* Change from grid to flex for mobile */
+    flex-direction: column; /* Stack vertically */
+  }
+  .about-copy {
+    max-width: none; /* Remove max-width for mobile to allow full width */
+    text-align: center; /* Center text in about-copy */
+  }
+  .about-copy h2,
+  .about-copy p {
+    text-align: center; /* Ensure all text inside about-copy is centered */
+  }
+
+  .about-copy p br {
+    display: none; /* Hide <br> tags for natural text flow */
+  }
+  .profile-card {
+    flex-direction: column; /* 사진이 위, 텍스트가 아래로 배치 */
+    align-items: center; /* 중앙 정렬 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+  }
+  .profile-info {
+    text-align: center;
+  } /* 모바일에서 텍스트 중앙 정렬 */
+  .profile-card .profile-image {
+    width: 120px; /* Reduced image size for mobile */
+    height: 165px; /* Adjusted height to maintain aspect ratio (120px * 22/16) */
+  } /* 모바일에서 텍스트 중앙 정렬 */
+  .profile-contact-links {
+    justify-content: center; /* 모바일에서 연락처 링크 중앙 정렬 */
+  }
+  .profile-info .profile-name,
+  .profile-info .profile-job-title,
+  .profile-info .profile-summary-text {
+    text-align: center;
+  }
+
+  /* Stack Grid (already 2 columns from 1024px, but explicitly set for clarity) */
   .about-grid,
   .stack-grid,
   .project-grid {
+    /* Project grid also 1 column */
     grid-template-columns: 1fr;
   }
 
@@ -761,19 +879,5 @@ h3 {
   .footer-content {
     flex-direction: column;
     text-align: center;
-  }
-}
-
-@media (max-width: 420px) {
-  .hero-actions,
-  .contact-actions,
-  .project-actions {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .btn,
-  .contact-button {
-    width: 100%;
   }
 }
