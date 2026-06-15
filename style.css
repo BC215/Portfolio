@@ -536,12 +536,12 @@ h3 {
 
 .project-card {
   overflow: hidden;
+  min-width: 0;
 }
 
 .project-image {
   position: relative;
-  height: 200px;
-  width: 100%;
+  aspect-ratio: 16 / 9;
   border-bottom: 1px solid var(--line);
   border-radius: 8px 8px 0 0;
   background-image:
@@ -552,12 +552,13 @@ h3 {
     8px 8px;
   background-size: 16px 16px;
   overflow: hidden;
+  background-color: #07111f;
 }
 
 .project-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
   position: relative;
   z-index: 1;
@@ -668,6 +669,7 @@ h3 {
 .project-body p {
   margin: 14px 0 20px;
   font-size: 14px;
+  margin-bottom: 24px;
 }
 
 .project-actions {
@@ -725,19 +727,29 @@ h3 {
 
 @media (max-width: 1024px) {
   .about-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 22px;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 20px !important;
   }
   .about-copy {
-    grid-column: auto;
-    grid-row: auto;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin-bottom: 20px !important;
+    word-break: keep-all;
+  }
+  .about-copy p {
+    line-height: 1.7;
   }
   .profile-card,
   .strength-card,
   .stack-card {
-    grid-column: auto;
-    grid-row: auto;
+    width: 100% !important;
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+  h2 {
+    word-break: keep-all !important;
   }
 
   .stack-grid {
@@ -752,11 +764,20 @@ h3 {
 
   .navbar,
   .container {
-    width: calc(100% - 40px);
+    width: 100% !important;
+  }
+
+  .container {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    box-sizing: border-box !important;
   }
 
   .navbar {
     height: 64px;
+  }
+  body {
+    overflow-x: hidden;
   }
 
   .menu-toggle {
@@ -766,8 +787,8 @@ h3 {
   .nav-menu {
     position: absolute;
     top: 64px;
-    left: 20px;
-    right: 20px;
+    left: 16px;
+    right: 16px;
     display: grid;
     gap: 6px;
     padding: 12px;
@@ -795,7 +816,7 @@ h3 {
   }
 
   .section {
-    padding: 60px 0;
+    padding: 60px 20px;
   }
 
   .hero-section {
@@ -823,11 +844,18 @@ h3 {
     width: 100%;
   }
 
+  p {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
   .about-grid {
     display: flex;
     flex-direction: column;
   }
   .about-copy {
+    grid-column: auto;
+    grid-row: auto;
     max-width: none;
     text-align: center;
   }
@@ -836,8 +864,20 @@ h3 {
     text-align: center;
   }
 
+  .about-copy p {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
   .about-copy p br {
     display: none;
+  }
+
+  .profile-card,
+  .strength-card,
+  .stack-card,
+  .project-card {
+    max-width: 100%;
+    margin: 0 10px 20px 10px !important;
   }
   .profile-card {
     flex-direction: column;
@@ -848,8 +888,9 @@ h3 {
     text-align: center;
   }
   .profile-card .profile-image {
-    width: 120px;
-    height: 165px;
+    width: 100%;
+    max-width: 150px;
+    height: auto;
   }
   .profile-contact-links {
     justify-content: center;
@@ -860,10 +901,11 @@ h3 {
     text-align: center;
   }
 
-  .about-grid,
   .stack-grid,
   .project-grid {
     grid-template-columns: 1fr;
+    gap: 20px !important;
+    margin-top: 20px;
   }
 
   .strength-wide {
@@ -881,5 +923,11 @@ h3 {
   .footer-content {
     flex-direction: column;
     text-align: center;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
